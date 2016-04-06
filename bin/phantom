@@ -1,0 +1,56 @@
+#!/usr/local/bin/phantomjs
+global.process = require('process/browser');
+
+var HTTP = require('webserver');
+var Router = require('../phantom/router');
+var Errors = require('../phantom/errors');
+
+var app = Router();
+var server = HTTP.create();
+
+app.use(require('../phantom/mw/body').json());
+app.use(app.route);
+
+/**
+ * Start a new WebPage session
+ */
+app.post('/session', function(req, res, next) {
+  res.json(Session.create());
+});
+
+/**
+ * Return a list of active sessions
+ */
+app.get('/session', noop);
+
+function noop(req, res, next) {
+  next(new Errors.NotImplementedError(null, {
+    method: req.method,
+    path: req.path
+  }));
+};
+
+function session(req, res, next) {
+
+}
+
+app.get('/session/:id', noop);
+app.get('/session/:id/content', noop);
+app.get('/session/:id/title', noop);
+
+app.get('/session/:id/cookie', noop);
+app.put('/session/:id/cookie', noop);
+app.delete('/session/:id/cookie/:cookie', noop);
+
+app.put('/session/:id/evaluate', noop);
+app.put('/session/:id/event', noop);
+app.put('/session/:id/inject', noop);
+app.put('/session/:id/navigate', noop);
+app.put('/session/:id/reload', noop);
+
+app.delete('/session/:id', function(req, res, next) {
+  req.page.close();
+
+});
+
+server.listen(8080, app);

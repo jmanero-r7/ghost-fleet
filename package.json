@@ -1,0 +1,21 @@
+{
+  "name": "ghost-fleet",
+  "version": "1.0.0",
+  "description": "PhantomJS cluster service",
+  "scripts": {
+    "test": "mocha",
+    "install": "cd phantom && npm install"
+  },
+  "author": "John Manero <john.manero@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mime": "^1.3.4",
+    "path": "^0.12.7",
+    "process": "^0.11.2",
+    "qs": "^6.1.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  }
+}

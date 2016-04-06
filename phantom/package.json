@@ -1,0 +1,11 @@
+{
+  "name": "ghost-ship",
+  "version": "1.0.0",
+  "description": "PhantomJS API instance",
+  "author": "John Manero <john.manero@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "path": "^0.12.7",
+    "path-to-regexp": "^1.2.1"
+  }
+}
